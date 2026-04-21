@@ -29,6 +29,9 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Clean npm cache
+      run: npm cache clean --force
+
     - name: Add Android platform
       run: PATH="$PATH:$(pwd)/node_modules/.bin" npx cap add android
 
