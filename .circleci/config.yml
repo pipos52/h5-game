@@ -20,11 +20,11 @@ jobs:
 
       - run:
           name: Add Android platform
-          command: npx cap add android
+          command: npx --yes @capacitor/cli@5.5.0 add android
 
       - run:
           name: Sync Capacitor
-          command: npx cap sync android
+          command: npx --yes @capacitor/cli@5.5.0 sync android
 
       - run:
           name: Build Android
