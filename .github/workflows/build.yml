@@ -33,10 +33,10 @@ jobs:
       run: npm install @capacitor/core@^5.0.0 @capacitor/cli@^5.0.0 @capacitor/android@^5.0.0
 
     - name: Add Android platform
-      run: npx @capacitor/cli add android
+      run: npx --yes @capacitor/cli@^5.0.0 add android
 
     - name: Sync Capacitor
-      run: npx @capacitor/cli sync android
+      run: npx --yes @capacitor/cli@^5.0.0 sync android
 
     - name: Build Android
       run: |
