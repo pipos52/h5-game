@@ -29,11 +29,14 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Verify Capacitor installation
+      run: ls -la node_modules/.bin/ | grep -E "(cap|capacitor)"
+
     - name: Add Android platform
-      run: ./node_modules/.bin/capacitor add android
+      run: npx cap add android
 
     - name: Sync Capacitor
-      run: ./node_modules/.bin/capacitor sync android
+      run: npx cap sync android
 
     - name: Build Android
       run: |
