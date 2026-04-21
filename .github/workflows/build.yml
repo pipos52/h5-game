@@ -29,14 +29,14 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Install Capacitor packages
-      run: npm install @capacitor/core@^5.0.0 @capacitor/cli@^5.0.0 @capacitor/android@^5.0.0
+    - name: Verify Capacitor installation
+      run: ls -la node_modules/@capacitor/cli/
 
     - name: Add Android platform
-      run: node ./node_modules/@capacitor/cli/bin/add android
+      run: npx @capacitor/cli add android
 
     - name: Sync Capacitor
-      run: node ./node_modules/@capacitor/cli/bin/sync android
+      run: npx @capacitor/cli sync android
 
     - name: Build Android
       run: |
