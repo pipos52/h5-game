@@ -15,7 +15,7 @@ jobs:
     steps:
       - run:
           name: Install git
-          command: apk add --no-cache git
+          command: sudo apt-get update && sudo apt-get install -y git
 
       - checkout
 
