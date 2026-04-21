@@ -3,7 +3,7 @@ version: 2.4
 jobs:
   build:
     docker:
-      - image: cimg/node:20.10
+      - image: cimg/node:20.10-browsers
       - image: cimg/android:2024.01.1
 
     working_directory: ~/repo
