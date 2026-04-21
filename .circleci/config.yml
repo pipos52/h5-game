@@ -1,0 +1,37 @@
+version: 2.4
+
+jobs:
+  build:
+    docker:
+      - image: cimg/node:20.10
+      - image: cimg/android:2023.11.1
+        environment:
+          JAVA_VERSION: "17"
+          ANDROID_SDK_ROOT: /opt/android-sdk
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - run:
+          name: Add Android platform
+          command: npx cap add android
+
+      - run:
+          name: Sync Capacitor
+          command: npx cap sync android
+
+      - run:
+          name: Build Android
+          command: |
+            cd android
+            ./gradlew assembleDebug
+
+      - store_artifacts:
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          destination: app-debug.apk
