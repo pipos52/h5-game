@@ -1,7 +1,7 @@
-version: 2.4
+version: 2.4版本: 2.4
 
-jobs:
-  build:
+jobs:作业:
+  build:构建:
     docker:
       - image: cimg/node:20.10
       - image: cimg/android:2024.01.1
@@ -10,37 +10,42 @@ jobs:
 
     environment:
       JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
-      PATH: $JAVA_HOME/bin:/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools/bin:$PATH
+      PATH: $JAVA_HOME/bin:/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools/bin:$PATH路径: 路径: $JAVA_HOME/bin:/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools/bin:$PATH路径: $JAVA_HOME/bin:/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools/bin:$PATH
 
-    steps:
-      - run:
-          name: Install git
-          command: sudo apt-get update && sudo apt-get install -y git
+    steps:步骤步骤：步骤:
+      - run运行:      - 运行:
+          name: Install git名称: 安装gitname: 安装git名称: name: 安装git名称: 安装gitname: 安装git名称: 安装git
+          command: sudo apt-get update && sudo apt-get install -y git命令: sudo apt-get update && sudo apt-get install -y git
 
       - checkout
 
-      - run:
-          name: Clear npm config
-          command: npm config delete registry || true; npm config delete proxy || true; npm config delete https-proxy || true
+      - run:      - 运行:      - 运行:      - 运行:
+          name: Clear npm config名称: 清除 npm 配置名称: 清除 npm 配置名称: 清除 npm 配置
+          command命令: npm config delete registry || true; npm config delete proxy || true; npm config delete https-proxy || true命令: npm config delete registry || true; npm config delete proxy || true; npm config delete https-proxy || true
 
-      - run:
-          name: Install dependencies
-          command: npm install --registry=https://registry.npmmirror.com --no-optional --no-audit --timeout=600000 --verbose
+      - run:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:
+          name: Install dependencies名称: 安装依赖名称: 安装依赖项
+          command命令: npm install --registry=https://registry.npmmirror.com --no-optional --no-audit --timeout=600000 --verbose命令: npm install --registry=https://registry.npmmirror.com --no-optional --no-audit --timeout=600000 --verbose
 
-      - run:
-          name: Add Android platform
-          command: npx --yes @capacitor/cli@5.5.0 add android
+      - run:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:
+          name: Add Android platform名称: 添加Android平台name: 添加Android平台名称: 添加Android平台名称: 添加Android平台名称: 添加Android平台name: 添加Android平台名称: 添加Android平台
+          command: npx --yes @capacitor/cli@5.5.0 add android命令: npx --yes @capacitor/cli@5.5.0 add android
 
-      - run:
-          name: Sync Capacitor
-          command: npx --yes @capacitor/cli@5.5.0 sync android
+      - run:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:
+          name: Sync Capacitor名称: 同步 Capacitorname: 同步 Capacitor名称: 同步 Capacitor
+          command: npx --yes @capacitor/cli@5.5.0 sync android命令: npx --yes @capacitor/cli@5.5.0 sync android命令: npx --yes @capacitor/cli@5.5.0 sync android命令: npx --yes @capacitor/cli@5.5.0 sync android
 
-      - run:
-          name: Build Android
-          command: |
+      - run:      - 运行:      - 运行:            - 运行:            - 运行:      - 运行:      - 运行:            - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:      - 运行:            - 运行:            - 运行:      - 运行:      - 运行:            - 运行:      - 运行:      - 运行:      - 运行:
+          name: Build Android名称: 构建Android名称: 构建Android名称: 构建Android
+          command命令: |命令: |
             cd android
             ./gradlew assembleDebug
 
       - store_artifacts:
           path: android/app/build/outputs/apk/debug/app-debug.apk
           destination: app-debug.apk
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
