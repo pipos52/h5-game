@@ -1,0 +1,25 @@
+{
+  "name": "h5-game",
+  "version": "1.0.0",
+  "description": "H5 Game for Android APK",
+  "main": "src/js/main.js",
+  "scripts": {
+    "dev": "npx http-server src -p 8080",
+    "build": "echo 'Build complete'",
+    "cap:sync": "npx cap sync",
+    "cap:add:android": "npx cap add android"
+  },
+  "keywords": [
+    "game",
+    "h5",
+    "capacitor"
+  ],
+  "author": "Bibos",
+  "license": "MIT",
+  "devDependencies": {
+    "@capacitor/cli": "^5.0.0",
+    "@capacitor/core": "^5.0.0",
+    "@capacitor/android": "^5.0.0",
+    "http-server": "^14.1.1"
+  }
+}
