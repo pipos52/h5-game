@@ -29,6 +29,9 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Install Android platform
+      run: npm install @capacitor/android@^5.0.0
+
     - name: Add Android platform
       run: npx @capacitor/cli add android
 
