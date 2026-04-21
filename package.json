@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "npx http-server src -p 8080",
     "build": "echo 'Build complete'",
-    "cap:add": "node ./node_modules/@capacitor/cli/bin/capacitor add android",
-    "cap:sync": "node ./node_modules/@capacitor/cli/bin/capacitor sync android"
+    "cap:add": "npx --yes @capacitor/cli@5.5.0 add android",
+    "cap:sync": "npx --yes @capacitor/cli@5.5.0 sync android"
   },
   "keywords": [
     "game",
