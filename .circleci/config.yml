@@ -13,8 +13,11 @@ jobs:
       PATH: $JAVA_HOME/bin:/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools/bin:$PATH
 
     steps:
-      - checkout:
-          fetch-depth: 1
+      - checkout
+
+      - run:
+          name: Disable blobless clone
+          command: git config --global --add clone.filter lfs
 
       - run:
           name: Clear npm config
