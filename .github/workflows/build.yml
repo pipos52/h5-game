@@ -27,7 +27,15 @@ jobs:
         distribution: 'temurin'
 
     - name: Install dependencies
-      run: npm install --verbose
+      run: |
+        echo "Current directory: $(pwd)"
+        echo "Files in current directory:"
+        ls -la
+        echo "Running npm install..."
+        npm install
+        echo "npm install completed"
+        echo "Checking node_modules:"
+        ls -la node_modules/
 
     - name: Verify Capacitor installation
       run: ls -la node_modules/.bin/ | grep -E "(cap|capacitor)"
