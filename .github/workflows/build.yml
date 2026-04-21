@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}
 
     steps:
     - name: Checkout code
@@ -27,15 +30,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Install dependencies
-      run: |
-        echo "Current directory: $(pwd)"
-        echo "Files in current directory:"
-        ls -la
-        echo "Running npm install..."
-        npm install
-        echo "npm install completed"
-        echo "Checking node_modules:"
-        ls -la node_modules/
+      run: npm install
 
     - name: Verify Capacitor installation
       run: ls -la node_modules/.bin/ | grep -E "(cap|capacitor)"
